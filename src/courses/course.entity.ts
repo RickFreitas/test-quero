@@ -1,46 +1,38 @@
+import { Campus } from 'src/campuses/campus.entity';
+import { Offer } from 'src/offers/offers.entity';
+import { University } from 'src/universities/university.entity';
 import {
   BaseEntity,
   Entity,
-  Unique,
   PrimaryGeneratedColumn,
   Column,
-  CreateDateColumn,
-  UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 
 @Entity()
-@Unique(['email'])
-export class User extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+export class Course extends BaseEntity {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-  @Column({ nullable: false, type: 'varchar', length: 200 })
-  email: string;
-
-  @Column({ nullable: false, type: 'varchar', length: 200 })
+  @Column({ nullable: false, type: 'varchar' })
   name: string;
 
-  @Column({ nullable: false, type: 'varchar', length: 20 })
-  role: string;
+  @Column({ nullable: false, type: 'varchar' })
+  kind: string;
 
-  @Column({ nullable: false, default: true })
-  status: boolean;
+  @Column({ nullable: false, type: 'varchar' })
+  shift: string;
 
-  @Column({ nullable: false })
-  password: string;
+  @Column({ nullable: false, type: 'varchar' })
+  level: string;
 
-  @Column({ nullable: false })
-  salt: string;
+  @OneToMany(() => Offer, (offer) => offer.course)
+  offers: Offer[];
 
-  @Column({ nullable: true, type: 'varchar', length: 64 })
-  confirmationToken: string;
+  @ManyToOne(() => Campus, (campus) => campus.courses)
+  campus: Campus;
 
-  @Column({ nullable: true, type: 'varchar', length: 64 })
-  recoverToken: string;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
+  @ManyToOne(() => University, (university) => university.courses)
+  university: University;
 }

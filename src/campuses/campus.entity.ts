@@ -1,4 +1,11 @@
-import { BaseEntity, Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Course } from 'src/courses/course.entity';
+import {
+  BaseEntity,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+} from 'typeorm';
 
 @Entity()
 export class Campus extends BaseEntity {
@@ -10,4 +17,7 @@ export class Campus extends BaseEntity {
 
   @Column({ nullable: false, type: 'varchar' })
   city: string;
+
+  @OneToMany(() => Course, (course) => course.campus)
+  courses: Course[];
 }

@@ -3,11 +3,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from './configs/typeorm.config';
 import { OffersModule } from './offers/offers.module';
 import { CoursesModule } from './courses/courses.module';
-import { CampusesModule } from './campuses/campuses.module';
-import { UniversitiesModule } from './universities/universities.module';
+import { CampusModule } from './campuses/campus.module';
+import { UniversitiesModule } from './universities/university.module';
 
 @Module({
-  imports: [OffersModule, CoursesModule, CampusesModule, UniversitiesModule],
+  imports: [
+    TypeOrmModule.forRoot(typeOrmConfig),
+    OffersModule,
+    CoursesModule,
+    CampusModule,
+    UniversitiesModule,
+  ],
   controllers: [],
   providers: [],
 })
