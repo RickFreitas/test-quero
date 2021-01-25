@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CampusRepository } from './campus.repository';
-import { CampusService } from './campus.service';
+import { CampusRepository } from '../repositories/campus.repository';
+import { CampusService } from '../services/campus.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CampusRepository])],

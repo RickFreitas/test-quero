@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CourseRepostiroy } from './course.repository';
-import { CourseService } from './course.service';
+import { CourseRepostiroy } from '../repositories/course.repository';
+import { CourseService } from '../services/course.service';
 
 @Module({
   imports: [TypeOrmModule.forFeature([CourseRepostiroy])],
