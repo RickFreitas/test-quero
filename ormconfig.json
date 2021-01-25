@@ -1,0 +1,20 @@
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "postgres",
+    "database": "course_api",
+    "entities": [
+        "src/models/**/*.ts"
+    ],
+    "migrations": [
+        "src/migrations/**/*.ts"
+    ],
+    "cli":{
+        "migrationsDir": [
+            "src/migrations/"
+        ],
+        "entitiesDir": "src/models"
+    }
+}
