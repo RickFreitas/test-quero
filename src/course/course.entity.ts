@@ -1,6 +1,6 @@
 import { Campus } from 'src/campuses/campus.entity';
 import { Offer } from 'src/offers/offers.entity';
-import { University } from 'src/universities/university.entity';
+import { University } from 'src/university/university.entity';
 import {
   BaseEntity,
   Entity,
